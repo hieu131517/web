@@ -6,8 +6,13 @@ const app =express()
 
 const port = 8080
 
-app.use(express.static(path.join(__dirname,'public')))
+const route= require('./routes');
 
+app.use(express.static(path.join(__dirname,'public')))
+app.use(express.urlencoded({
+    extended: true
+}))
+app.use(express.json());
 app.use(morgan('combined'))
 
 app.engine('hbs', engine({
@@ -16,12 +21,9 @@ app.engine('hbs', engine({
 app.set('view engine','hbs');
 app.set('views',path.join(__dirname,'resources/views'))
 
-app.get('/',(req,res)=>{
-    return res.render('home');
-})
+route(app);
 
-app.get('/news',(req,res)=>{
-    return res.render('new');
-})
+
+
 
 app.listen(port, ()=> console.log(`Example app listening at http://localhost:${port}`))
