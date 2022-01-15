@@ -18,13 +18,25 @@
     "url": "https://github.com/hieu131517/web/issues"
   },
   "homepage": "https://github.com/hieu131517/web#readme",
+ "lint-staged":{
+   "src/**/*.{js,json,scss}":"prettier --single-quote --trailing-comma all --tab-width 4 --write"
+ },
+ "husky":{
+   "hooks":{
+     "pre-commit":"lint-staged"
+   }
+ },
+ 
   "dependencies": {
     "express": "^4.17.2",
     "express-handlebars": "^6.0.2"
   },
   "devDependencies": {
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.7",
     "morgan": "^1.10.0",
     "node-sass": "^7.0.1",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1"
   }
 }
