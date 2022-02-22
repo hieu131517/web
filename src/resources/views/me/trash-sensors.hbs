@@ -1,0 +1,98 @@
+
+<h1 style="color: red;">Danh sách cảm biến đã xoá: </h1>
+
+<a href="/me/stored/sensors">Quay lại</a>
+<br></br>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">STT</th>
+      <th scope="col">Cảm biến</th>
+      <th scope="col">Ngày tạo</th>
+      <th scope="col">Địa điểm</th>
+      <th scope="col">slug</th>
+        <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+      {{#each sensors}}
+    <tr>
+      <th scope="row">{{sum @index 1}}</th>
+      <td>{{this.name}}</td>
+      <td>{{this.createdAt}}</td>
+      <td>{{this.diadiem}}</td>
+      <td>{{this.slug}}</td>
+      <td>
+          <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}">Khôi phục</a>
+           <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-sensor-modal">Xoá vĩnh viễn</a>
+      </td>
+    </tr>
+    {{else}}  
+      <tr>
+        <td colspan="6" class="text-center">
+          Thùng rác trống.
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+
+
+
+
+<!-- Modal -->
+<div id="delete-sensor-modal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xoá vĩnh viễn</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Bạn có muốn xoá vĩnh viễn cảm biến này?
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="btn-delete-sensor" class="btn btn-danger">Xoá</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Huỷ</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<form name="delete-sensor-form" method="POST" ></form>
+<form name="restore-sensor-form" method="POST" ></form>
+
+<script>
+  
+    document.addEventListener('DOMContentLoaded',function(){
+        var sensorId;
+
+        var deleteForm= document.forms['delete-sensor-form'];
+        var restoreForm= document.forms['restore-sensor-form'];
+
+        var btnDeleteSensor= document.getElementById('btn-delete-sensor');
+        var restoreBtn= $('.btn-restore');
+
+         $('#delete-sensor-modal').on('show.bs.modal', function (event) {
+         var button = $(event.relatedTarget) // Button that triggered the modal
+            sensorId = button.data('id') 
+        });
+
+       
+        btnDeleteSensor.onclick =function(){
+          deleteForm.action = '/sensors/' + sensorId + '/force?_method=DELETE';
+          deleteForm.submit();
+        }
+        restoreBtn.click(function(e){
+          e.preventDefault();
+          var sensorId= $(this).data('id');
+          restoreForm.action = '/sensors/' + sensorId + '/restore?_method=PATCH';
+          restoreForm.submit();
+        })
+    })
+  
+</script>

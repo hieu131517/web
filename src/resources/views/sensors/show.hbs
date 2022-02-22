@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <br>
+        <h5>Tên cảm biến: {{sensor.name}}</h5>
+        <h5>Mô tả: {{sensor.description}}</h5>
+        <h5>Địa điểm: {{sensor.diadiem}}</h5>
+        <h5>Ngày tạo: {{sensor.createdAt}}</h5>
+        <h5>Trạng thái: {{sensor.trangthai}}</h5> 
+        <h3><a href="/sensors/{{sensor.slug}}/lichsu" class="badge badge-primary">Lịch sử</a>  </h3>
+        <meta charset="utf-8">
+        <br>
+        <tittle><h5>Biểu đồ thông số ({{sensor.donvi}})</h5></tittle>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    </head>
+    <body>
+        <canvas id="linechart"></canvas>
+    </body>
+<script>
+
+    var x= [{{sensor.time}}]
+var bienx=[]
+var y= [{{sensor.lichsu}}]
+var bieny=[]
+    for(var i=0;i<20;i++){
+        var a=y.pop();
+        bieny.push(a);
+
+        var c=x.pop();
+        var d=new Date(c);
+        
+        bienx.push(d);
+       
+    }
+
+    
+    var CHART=document.getElementById('linechart')
+    var line_chart= new Chart(CHART,{
+        type: 'line',
+        data:{
+            labels:bienx,
+            datasets:[{
+                label:'thông số',
+                data:bieny
+            }]
+        }
+         
+    
+    })
+</script>
+
+</html>
+

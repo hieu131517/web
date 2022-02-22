@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <br>
+        <h5>Tên cảm biến: {{sensor.name}}</h5>
+        <h5>Mô tả: {{sensor.description}}</h5>
+        <h5>Địa điểm: {{sensor.diadiem}}</h5>
+        <h5>Ngày tạo: {{sensor.createdAt}}</h5>
+        <h5>Trạng thái: {{sensor.trangthai}}</h5> 
+       
+        <meta charset="utf-8">
+        <br>
+        
+    </head>
+    <body>
+       <table class="table table-bordered">
+  <thead>
+    <tr>
+      
+     <th scope="col">STT</th>
+      <th scope="col">Lịch sử</th>
+     
+       
+    </tr>
+  </thead>
+  <tbody>
+
+  {{#each sensor.ls}}
+    <tr>
+       <th scope="row">{{sum @index 1}}</th>
+      <td >{{this}}</td>
+      
+    </tr>
+   
+    {{/each}}
+     
+    
+     
+    
+  </tbody>
+</table>
+    </body>
+
+
+</html>
+

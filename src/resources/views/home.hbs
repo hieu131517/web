@@ -1,1 +1,37 @@
-<h1>home</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+<body>
+
+<h1 style="color: red">Danh sách cảm biến: </h1>
+
+<div class="mt-4">
+    <div class="row">
+
+        {{#each sensors}}
+       
+        <div class=".col-sm-6 col-lg-4">
+             <a href="/sensors/{{this.slug}}">
+            <div class="card card-sensor-item" >
+              <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
+             <div class="card-body">
+            
+              <h5 class="card-title">{{this.name}}</h5>
+                 </a>
+                 <p class="card-title">Thông số: {{this.thongso}} {{this.donvi}}</p>
+              <p class="card-title">Địa điểm: {{this.diadiem}}</p>
+              <p class="card-title">Trạng thái: <span class="badge badge-pill badge-danger"> {{this.trangthai}}</span></p>
+              <p class="card-text">Mô tả: {{this.description}}</p>
+              
+              </div>
+            </div>
+              
+        </div>
+   
+        {{/each}}
+    </div>
+</div>
+</body>
+</html>
