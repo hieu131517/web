@@ -25,15 +25,10 @@ var bieny=[]
     for(var i=0;i<20;i++){
         var a=y.shift();
         bieny.push(a);
-
         var c=x.shift();
-        var d=new Date(c);
-        
-        bienx.push(d);
-       
-    }
-
-    
+        var d=new Date(c);      
+        bienx.push(d); 
+    }   
     var CHART=document.getElementById('linechart')
     var line_chart= new Chart(CHART,{
         type: 'line',
