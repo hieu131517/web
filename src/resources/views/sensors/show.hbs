@@ -23,13 +23,13 @@ var bienx=[]
 var y= [{{sensor.lichsu}}]
 var bieny=[]
     for(var i=0;i<20;i++){
-        var a=y.pop();
-        bieny.unshift(a);
+        var a=y.shift();
+        bieny.push(a);
 
-        var c=x.pop();
+        var c=x.shift();
         var d=new Date(c);
         
-        bienx.unshift(d);
+        bienx.push(d);
        
     }
 
