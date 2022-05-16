@@ -24,12 +24,12 @@ var y= [{{sensor.lichsu}}]
 var bieny=[]
     for(var i=0;i<20;i++){
         var a=y.pop();
-        bieny.push(a);
+        bieny.unshift(a);
 
         var c=x.pop();
         var d=new Date(c);
         
-        bienx.push(d);
+        bienx.unshift(d);
        
     }
 
