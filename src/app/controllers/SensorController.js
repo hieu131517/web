@@ -46,6 +46,7 @@ class SensorController {
 
    update(req,res,next){
       Sensor.updateOne({_id : req.params.id},req.body)
+      
         .then(()=>
               res.redirect('/me/stored/sensors')
         )
