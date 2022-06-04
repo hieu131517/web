@@ -80,12 +80,12 @@ class SensorController {
             sensor.trangthai='Có sự cố'
          }
          else{sensor.trangthai='Bình thường'}
-         var date  = new Date().toLocaleString("en-US", {timeZone: "Asia/Shanghai"});
-         var x = date.getTime();
-        
-         sensor.ls.unshift(date+"  :   "+ req.query.data + sensor.donvi )
+         var date  = new Date();
+         var x = date.getTime()+7*3600000;
+         var date2  = new Date(x);
+         sensor.ls.unshift(date2+"  :   "+ req.query.data + sensor.donvi )
          
-        sensor.thoidiem.unshift(date);
+        sensor.thoidiem.unshift(date2);
         sensor.time.unshift(x);
          sensor.save();
          res.send(req.query.data);
