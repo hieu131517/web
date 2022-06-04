@@ -86,11 +86,11 @@ class SensorController {
          var date2  = new Date(y);
 
          
-         var date3=date2.getDate()+'-'+(date2.getMonth()+1)+'-'+date2.getFullYear();
+         var date3=date2.getDate()+'/'+(date2.getMonth()+1)+'/'+date2.getFullYear();
          var time3=date2.getHours()+":"+date2.getMinutes()+":"+date2.getSeconds();
-         var dateTime=date3+'   '+time3;
+         var dateTime='Ngày : '+date3+'    '+time3;
 
-         sensor.ls.unshift(dateTime+"  :   "+ req.query.data + sensor.donvi )
+         sensor.ls.unshift(dateTime+"    :     "+ req.query.data + sensor.donvi )
          
         sensor.thoidiem.unshift(dateTime);
         sensor.time.unshift(x);
