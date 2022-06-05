@@ -26,7 +26,7 @@ class SiteController {
                       sensors: mutipleMongooseToObject(sensors)
                      });
              })
-            .catch(next=>res.send('ko tim thay'));
+            .catch(next=>res.send('Không tìm thấy kết quả'));
     }
 
 }

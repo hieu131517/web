@@ -20,12 +20,42 @@ class SensorController {
      .catch(next);
   }
 
+  findday(req,res,next){
+   var regex= new RegExp(req.query.day);
+   var y=new Date(regex);
+   var x=y.getTime();
+   var day=y.getFullYear()+'-'+(y.getMonth()+1)+'-'+y.getDate();
+
+   var dataday=[];
+   Sensor.findOne({slug: req.params.slug})
+   .then(sensor=>{
+         const data=sensor.ls;
+
+         var a=data.length;
+         for (var b=0;b<a;b++){
+            if(data[b].search(day)!=-1){
+               dataday.push(data[b]);
+            }
+
+         }  
+     
+       
+         res.render('sensors/lsday',{dataday});
+         
+   })
+       .catch(next=>res.send('Không tìm thấy kết quả'));
+}
+
+
    create(req,res,next){
       res.render('sensors/create');
    }
 
    store(req,res,next){
-      if(req.body.tsmax<=req.body.tsmin){res.send('Giới hạn không hợp lệ')}
+      var a=Number(req.body.tsmax);
+      var b=Number(req.body.tsmin);
+
+      if(a <= b){res.send('Giới hạn không hợp lệ')}
       else{
       req.body.image=`http://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`;
       const sensor= new Sensor(req.body);
@@ -86,9 +116,9 @@ class SensorController {
          var date2  = new Date(y);
 
          
-         var date3=date2.getDate()+'/'+(date2.getMonth()+1)+'/'+date2.getFullYear();
+         var date3=date2.getFullYear()+'-'+(date2.getMonth()+1)+'-'+date2.getDate();
          var time3=date2.getHours()+":"+date2.getMinutes()+":"+date2.getSeconds();
-         var dateTime='Ngày : '+date3+'  '+'  '+time3;
+         var dateTime='Thời gian: '+time3+',  '+date3;
 
          sensor.ls.unshift(dateTime+" : "+ req.query.data + sensor.donvi )
          

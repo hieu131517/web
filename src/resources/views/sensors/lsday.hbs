@@ -2,17 +2,10 @@
 <html>
     <head>
         <br>
-        <h5>Tên cảm biến: {{sensor.name}}</h5>
-   
-        <h5>Địa điểm: {{sensor.diadiem}}</h5>
-        <h5>Ngày tạo: {{sensor.createdAt}}</h5>
-        <h5>
-        <form action="/sensors/{{sensor.slug}}/findday">
-         <label for="day">Nhật ký:</label>
-          <input type="date" id="day" name="day">
-          <input type="submit">
-        </form>
-</h5> 
+        <h5>Kết quả tìm kiếm: </h5>
+        
+       
+
         <meta charset="utf-8">
         <br>
         
@@ -30,7 +23,7 @@
   </thead>
   <tbody>
 
-  {{#each sensor.ls}}
+  {{#each dataday}}
     <tr>
        <th scope="row">{{sum @index 1}}</th>
       <td >{{this}}</td>

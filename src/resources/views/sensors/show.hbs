@@ -27,8 +27,11 @@ var bieny=[]
         bieny.push(a);
         var c=x.shift();
         var d=new Date(c);  
-            
-        bienx.push(d); 
+        var date=d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+         var time=d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
+         var dateTime='Thời gian: '+time+',  '+date;
+
+        bienx.push(dateTime); 
     }   
     var CHART=document.getElementById('linechart')
     var line_chart= new Chart(CHART,{

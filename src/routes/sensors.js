@@ -5,6 +5,7 @@ const sensorController = require('../app/controllers/SensorController');
 
 router.get('/create', sensorController.create);
 router.get('/:slug/lichsu', sensorController.lichsu);
+router.get('/:slug/findday', sensorController.findday);
 router.get('/:id/edit', sensorController.edit);
 router.put('/:id', sensorController.update);
 router.patch('/:id/restore', sensorController.restore);

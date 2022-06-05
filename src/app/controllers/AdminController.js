@@ -10,7 +10,7 @@ class AdminController {
     check(req, res,next) {
         Admin.findOne({name:req.body.name, password:req.body.password})
             .then(admin=>{
-                if(admin==null){res.send('tai khoan ko chinh xac')}
+                if(admin==null){res.send('Tài khoản không chính xác')}
                 else res.redirect('/me/stored/sensors');
               })
             .catch(next);
