@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/JNKKKK/MoreToggles.css@0.2.1/output/moretoggles.min.css">
+    </head>
+<body>
+
+<h2 style="color: red">Điều khiển các thiết bị</h2>
+ {{#each dks}}
+  
+<div class="mt-4">
+  
+    <div class="row">
+     
+        <div class="mt-ios"> 
+            <p style="color: blue">{{this.name}}</p>
+           <a class="btn btn-primary" href="/dieukhien/{{this._id}}" role="button">{{this.onoff}}
+              </a>
+          </div>
+          <br>
+     
+       
+    </div>
+
+</div>
+ {{/each}}
+
+ 
+</body>
+</html>
