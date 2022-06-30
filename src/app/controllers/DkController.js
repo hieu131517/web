@@ -24,7 +24,11 @@ class DkController {
          })
        .catch(next);
     }
-
+    read(req, res,next) {
+       Dk.findById(req.params.id)
+        .then(dk=> res.send(dk.trangthai))
+        .catch(next);
+    }
     }
 
     

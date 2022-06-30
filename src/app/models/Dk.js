@@ -8,8 +8,7 @@ const Dk= new Schema({
    name:{type:String,require: true,unique:true},
    trangthai:{type:Boolean},
    onoff:{type:String},
-   
-
+  
    
 })
 
