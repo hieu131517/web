@@ -29,6 +29,17 @@ class DkController {
         .then(dk=> res.send(dk.trangthai))
         .catch(next);
     }
+    readall(req, res,next) {
+        Dk.find({})
+         .then(dk=>{var a=[];
+            dk.forEach(dk => {
+                a.push(dk.trangthai)
+            });
+                res.send(a);
+            }    
+                 )
+         .catch(next);
+     }
     }
 
     
